@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .runner {
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: left center;
+            background-image: url("/img/runner.gif");
+            width: 120px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+            position: relative;
+        }
+        .house{
+            background-image: url("/img/house.gif");
+            background-size: contain;
+            background-position: right center;
+            background-repeat: no-repeat;
+            width:150px;
+            height: 150px;
+        }
+
+        /* exersice 2 */
+
+        section{
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        #main{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+
+        }
+        .item{
+            width: 100px;
+            height: 50px;
+            background-color: #cbc4c4;
+
+            margin: 10px;
+        }
+        section div div:nth-child(1){
+            margin-right: 10px !important;
+            position: relative;
+            bottom:80px;
+            right:30px;
+        }
+
+        section div div:nth-child(6){
+            position: relative;
+            top:80px;
+            left:30px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="runner">A</div>
+        <div class="runner">B</div>
+        <div class="runner">C</div>
+        <div class="runner">D</div>
+        <div class="runner">E</div>
+        <div class="runner">F</div>
+
+        <div class="house"></div>
+    </section>
+
+    <!-- Exersice 2 -->
+    <section>
+        <div id="main">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+    </section>
+
+    <script>
+        let  data = ['A','B','C','D','E','F'];
+        const updateLetters=() =>{
+            let lastLetter = data.pop();
+            data.unshift(lastLetter);
+            document.getElementsByTagName('div')[0].innerText = data[0];
+            document.getElementsByTagName('div')[1].innerText = data[1];
+            document.getElementsByTagName('div')[2].innerText = data[2];
+            document.getElementsByTagName('div')[3].innerText = data[3];
+            document.getElementsByTagName('div')[4].innerText = data[4];
+            document.getElementsByTagName('div')[5].innerText = data[5];
+        }
+        setInterval(updateLetters,1000);
+
+        // exersice 2
+
+        let colours =["red", "green", "blue", "yellow", "lightpink", "purple"];
+    const items= document.getElementsByClassName("item");
+
+    const changeColours = () =>{
+        let last = colours.pop();
+        colours.unshift(last);
+
+        for (let i = 0; i < items.length; i++) {
+            items[i].style.backgroundColor = colours[i];
+        }
+    }
+    setInterval(changeColours, 1000);
+    </script>
+</body>
+</html>
